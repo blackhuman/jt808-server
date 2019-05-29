@@ -16,7 +16,7 @@ public class NettyConfig {
 
     @Bean
     public TCPServer TCPServer(WebLogger webLogger) {
-        TCPServer server = new TCPServer(7611, (byte) 0x7e, handlerMapper(), messageDecoder(), messageEncoder(), webLogger);
+        TCPServer server = new TCPServer(9502, (byte) 0x7e, handlerMapper(), messageDecoder(), messageEncoder(), webLogger);
         server.startServer();
         return server;
     }

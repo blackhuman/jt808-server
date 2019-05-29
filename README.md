@@ -28,7 +28,7 @@ HandlerMapper根据不同的消息ID找到对应的Handler，也就是JT808Endpo
 
 #### 3.Test目录下为JT/T 808协议的测试用例和报文解释器
 
-org.yzh.jt808.codec.Elucidator（报文解释器）
+org.yzh.tools.Elucidator（报文解释器）
 
 可分析报文内每个属性所处的位置以及转换后的值，以便查询报文解析出错的原因。
 

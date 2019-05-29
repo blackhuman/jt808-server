@@ -16,10 +16,15 @@ import org.yzh.framework.message.AbstractHeader;
 import org.yzh.framework.message.PackageData;
 import org.yzh.framework.session.Session;
 import org.yzh.framework.session.SessionManager;
+import org.yzh.tools.Elucidator;
+import org.yzh.web.config.Charsets;
+import org.yzh.web.jt808.dto.PositionReport;
 import org.yzh.web.jt808.dto.basics.Header;
 
 @ChannelHandler.Sharable
 public class TCPServerHandler extends ChannelInboundHandlerAdapter {
+
+    private static final Elucidator elucidator = new Elucidator(Charsets.GBK);
 
     private final SessionManager sessionManager = SessionManager.getInstance();
 
@@ -74,6 +79,7 @@ public class TCPServerHandler extends ChannelInboundHandlerAdapter {
 
             headerBodyBuf.resetReaderIndex();
             logger.logMessage("i " + handler.toString(), packageData, ByteBufUtil.hexDump(headerBodyBuf));
+            elucidator.decode(Unpooled.wrappedBuffer(headerBodyBuf), Header.class, PositionReport.class);
 
             PackageData<? extends AbstractHeader> result;
             if (types.length == 1) {
